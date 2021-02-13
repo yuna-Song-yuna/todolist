@@ -1,20 +1,34 @@
 function Time(){
-    const date = new Date();
-    //onsole.log(date)
-    const year = date.getFullYear();
-    const month = date.getDate();
-    const day = date.getDay();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
+    const calender = new Date();
 
+    const hours = calender.getHours();
+    const minutes = calender.getMinutes();
+    const seconds = calender.getSeconds();
 
-    document.getElementById('date').innerHTML = `${year} ${month} ${day}`
 
     document.getElementById('clock').innerHTML = `${hours<10?`0${hours}`:`${hours}`}
     :${minutes<10? `0${minutes}`:`${minutes}`}
     :${seconds<10? `0${seconds}`:`${seconds}`}`
 }
 
-Time();
-setInterval(Time, 1000);
+
+function day(){
+    const calender = new Date();
+
+    const year = calender.getFullYear();
+    const month = calender.getMonth();
+    const date = calender.getDate();
+    const day = calender.getDay();
+
+    document.getElementById('date').innerHTML = `${year} ${month} ${date} ${day}`
+}
+
+
+
+function init(){
+    day();
+    Time();
+    setInterval(Time, 1000);
+}
+
+init();
