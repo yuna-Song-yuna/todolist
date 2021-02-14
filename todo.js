@@ -10,10 +10,46 @@ const date = calender.getDate();
 let todos = []
 let doneTodos = []
 
+
 //local storage에는 자바스크립트의 data를 저장할 수 없음. string만 저장 가능
 //local storage에 만들어 놓은 todo객체 저장하기
 function saveTodo(){
     localStorage.setItem('todo', JSON.stringify(todos));
+}
+
+// 전체삭제 버튼 생성하는 함수
+function showDeleteBtn(){
+    if(todos.length >= 1 && !todoList.querySelector(".deleteAllBtn")){
+        const btn = document.createElement("button")
+        btn.innerText = "Delete All"
+        btn.classList.add("deleteAllBtn")
+        todoList.prepend(btn)
+        btn.addEventListener("click",deleteAll)
+    }
+    if(doneTodos.length >= 1 && !todoDone.querySelector(".deleteAllBtnDone")){
+        const btn = document.createElement("button")
+        btn.innerText = "Delete All"
+        btn.classList.add("deleteAllBtnDone")
+        todoDone.prepend(btn)
+        btn.addEventListener("click",deleteAll)
+    }
+}
+
+// 전체삭제 눌렀을 때 발생하는 함수
+function deleteAll(event){
+    if(event.target.parentNode.className == "js-todoList"){
+        todos = [];
+        localStorage.removeItem('todo')
+        while(todoList.hasChildNodes()){
+            todoList.removeChild(todoList.firstChild);
+        }
+    }else{
+        doneTodos = [];
+        localStorage.removeItem('doneTodo')
+        while(todoDone.hasChildNodes()){
+            todoDone.removeChild(todoDone.firstChild);
+        }
+    }
 }
 
 // TODO LIST에서 삭제 버튼 클릭했을 때 이벤트 => 해당 li html에서 삭제하고 보여주기, 삭제하고 남은 나머지만 local storage에 저장하기
@@ -26,6 +62,9 @@ function deleteTodo(event){
     })
     todos = cleanTodo
     saveTodo();
+    console.log(todos)
+    console.log(li)
+    if(todos.length == 0) todoList.removeChild(todoList.querySelector(".deleteAllBtn"));
 }
 
 // DONE에서 삭제 버튼 클릭했을 때
@@ -38,6 +77,7 @@ function deleteDoneTodo(event){
     })
     doneTodos = cleanTodo
     localStorage.setItem('doneTodo', JSON.stringify(doneTodos));
+    if(doneTodos.length == 0) todoDone.removeChild(todoDone.querySelector(".deleteAllBtnDone"));
 }
 
 // DONE에서 실행취소 버튼 클릭했을 때
@@ -50,16 +90,17 @@ function moveToTodo(event){
     paintTodo(moveTodo[0]);
     deleteDoneTodo(event);
     saveTodo();
+    showDeleteBtn()
 }
 
 // DONE으로 해당 값 뿌려주고 localstrage('doneTodo')로 값 이동
 function paintDoneTodo(todo){
-    console.log('paintdonetodo', todo)
+    // console.log('paintdonetodo', todo)
     const check = document.createElement("button")
     const li = document.createElement("li");
     const delBtn = document.createElement("button");
     const span = document.createElement("span");
-    check.innerText = "실행취소"
+    check.innerText = '👈'
     delBtn.innerText = "❌"
     check.addEventListener("click", moveToTodo)
     delBtn.addEventListener("click", deleteDoneTodo)
@@ -86,6 +127,7 @@ function doneTodo(event){
 
     deleteTodo(event);
     paintDoneTodo(doneList[0]);
+    showDeleteBtn();
 }
 
 //받은 값 화면에 뿌려주고 todos 배열에 추가
@@ -132,6 +174,7 @@ function handleSubmit(event){
     saveTodo();
     todoInput.value = '';
     newId += 1;
+    showDeleteBtn(event)
 }
 
 //local storage에 저장되어있는 객체 불러오기
@@ -155,6 +198,7 @@ function loadTodo(){
 function init(){
     loadTodo();
     todoForm.addEventListener("submit", handleSubmit)
+    showDeleteBtn()
 }
 
 init();

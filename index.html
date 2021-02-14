@@ -5,32 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="index.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+
 </head>
+
+
 <body>
 
-    <!--clock-->
-    <div id="date"></div>
-    <div id="clock">
-        00:00
+    <div class="header">
+        <form class="js-form form" id="form">
+            <input id="form_input" class="inputName" type="text" placeholder="put your name">
+        </form>
+        <h4 class="js-greetings greetings" id="greetings" onmouseover="announce()" onmouseout="announceEnd()">hello</h4>
+
+        <!-- weather -->
+        <span class="js-weather weather"></span>
     </div>
-    <form class="js-form form" id="form">
-        <input id="form_input" type="text" placeholder="put your name">
+
+    <!--clock-->
+    <div class="clock">
+        <div id="date"></div>
+        <div id="clock"></div>
+        <div id="second">00</div>
+    </div>
+
+    <!-- to-do-list -->
+    <form class="js-todoForm todoForm">
+        <input type="text" placeholder="Write a to do" class="todoInput">
     </form>
-    <h4 class="js-greetings greetings" id="greetings">hello</h4>
 
-    <form class="js-todoForm">
-        <input type="text" placeholder="Write a to do">
-    </form>
+    <div class="container">
+        <div class="list todo">TODO LIST
+            <ul class="js-todoList">
+            </ul>
+        </div>
 
-    <ul class="js-todoList">
-        TODO LIST
-    </ul>
+        <div class="list done"> DONE
+            <ul class="js-todoDone todoDone">
+            </ul>
+        </div>
+    </div>
 
-    <ul class="js-todoDone">
-        DONE
-    </ul>
 
-    <span class="js-weather"></span>
 
     <script src="clock.js"></script>
     <script src="greeting.js"></script>

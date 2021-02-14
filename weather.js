@@ -11,7 +11,7 @@ function getWeather(lat, lon){
     }).then(function(json){
         const temperature = json.current.temp;
         const place = json.timezone;
-        weather.innerText = `${temperature} @ ${place}`;
+        weather.innerText = `${temperature}°C @ ${place}`;
     })
     console.log('weather request is success')
 }
