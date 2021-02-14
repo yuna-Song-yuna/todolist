@@ -1,9 +1,151 @@
+*{
+    font-family: 'Bad Script';
+}
+
+.header{
+    height: 60px;
+}
+
+.inputName{
+    width: 250px;
+    height: 40px;
+    background-color: #2d3436;
+    color: white;
+}
+
+.inputName::placeholder{
+    color: white;
+}
+
+.greetings, .weather{
+    float: left;
+    width: 50%;
+}
+
+.showing, .weather{
+    float: left;
+    width: 50%;
+}
+
+.weather{
+    text-align: right;
+    font-weight: bold;
+    /* color: white; */
+}
+
+.greetings{
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
 .form, .greetings{
     display: none;
 }
 
 .showing{
     display: block;
+    margin-bottom: 0px;
+}
+
+.announce{
+    color: white;
+    font-size: 1em;
+    font-weight: lighter;
+    margin-left: 20px;
+}
+
+.clock{
+    position: relative;
+    height: 130px;
+}
+
+#date, #clock, #second{
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+#date{
+    font-size: 1.5em;
+    height: 30px;
+}
+
+#clock{
+    font-size: 5em;
+    /* position: relative; */
+    /* height: 100px; */
+}
+
+#second{
+    font-size: 1.4em;
+    position: absolute;
+    height: 100px;
+    left: 8%;
+    top: 70%;
+}
+#clock, #second{
+    float: left;
+}
+
+.todoForm{
+    position: relative;
+    text-align: center;
+}
+
+.todoInput{
+    width: 30%;
+    height: 30px;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.list{
+    margin-top: 1%;
+    text-align: center;
+    height: 450px;
+    overflow: scroll;
+    background-color: #e6e6e69d;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 2em;
+    border-radius: 10px;
+}
+
+.todoDone li{
+    text-decoration: line-through;
+}
+
+ul{
+    font-size: 20px;
+    margin-top: 0;
+}
+li{
+    list-style: none;
+    margin-top: 1%;
+    background-color: #2d3436;
+    margin-right: 5%;
+    height: 35px;
+    border-radius:5px;
+    color: white;
+}
+button{
+    border: none;
+    background-color: transparent;
+    text-align: left;
+    font-size: 1em;
+    cursor: pointer;
+    outline: none;
+}
+
+input{
+    border-radius: 10px;
+    border: 0px none;
+    outline: none;
+    text-align: center;
 }
 
 @keyframes fadeIn{

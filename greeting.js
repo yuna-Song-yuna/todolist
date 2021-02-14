@@ -8,6 +8,25 @@ const USER_LS = "currentUser";
 const SHOWING_CN = "showing";
 
 
+function announce(){
+    const span = document.createElement("span");
+    span.classList.add("announce")
+    span.innerText = "Click Here and Rename"
+    greeting.appendChild(span)
+}
+
+function announceEnd(){
+    greeting.removeChild(document.querySelector(".announce"))
+}
+
+function rename(){
+    input.value=''
+    greeting.classList.remove(SHOWING_CN);
+    form.classList.add(SHOWING_CN);
+    localStorage.removeItem(USER_LS);
+    form.addEventListener("submit", handleSubmit)
+}
+
 function saveName(text){
     localStorage.setItem(USER_LS, text)
 }
@@ -43,6 +62,7 @@ function loadName(){
 
 function init(){
     loadName();
+    greeting.addEventListener("click",rename)
 }
 
 init();
