@@ -163,7 +163,7 @@ if(localStorage.doneTodo !== '[]' && localStorage.doneTodo) doneTodoMax = JSON.p
 const maxId = Math.max(todoMax, doneTodoMax)
 let newId = maxId+1;
 
-function handleSubmit(event){
+function todoHandlesubmit(event){
     event.preventDefault();
     const currentValue = todoInput.value;
     const todoObj = {
@@ -197,7 +197,7 @@ function loadTodo(){
 
 function init(){
     loadTodo();
-    todoForm.addEventListener("submit", handleSubmit)
+    todoForm.addEventListener("submit", todoHandlesubmit)
     showDeleteBtn()
 }
 

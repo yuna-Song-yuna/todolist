@@ -24,14 +24,15 @@ function rename(){
     greeting.classList.remove(SHOWING_CN);
     form.classList.add(SHOWING_CN);
     localStorage.removeItem(USER_LS);
-    form.addEventListener("submit", handleSubmit)
+    form.addEventListener("submit", greetingHandlesubmit)
 }
 
 function saveName(text){
     localStorage.setItem(USER_LS, text)
 }
 
-function handleSubmit(event){
+function greetingHandlesubmit(event){
+    console.log('name setting')
     event.preventDefault();
     const currentValue = input.value;
     paintGreeting(currentValue);
@@ -40,7 +41,7 @@ function handleSubmit(event){
 
 function askForName(){
     form.classList.add(SHOWING_CN)
-    form.addEventListener("submit", handleSubmit)
+    form.addEventListener("submit", greetingHandlesubmit)
 }
 
 function paintGreeting(text){
