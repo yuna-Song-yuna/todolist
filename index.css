@@ -2,6 +2,10 @@
     font-family: 'Bad Script';
 }
 
+.bgImage{
+    width: 100%;
+}
+
 .header{
     height: 60px;
 }
