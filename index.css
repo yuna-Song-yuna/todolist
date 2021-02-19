@@ -106,7 +106,8 @@
 .list{
     margin-top: 1%;
     text-align: center;
-    height: 450px;
+    /* height: 450px; */
+    height: 14em;
     overflow: scroll;
     background-color: #e6e6e69d;
     margin-left: 5%;
@@ -114,6 +115,7 @@
     font-size: 2em;
     border-radius: 10px;
 }
+
 
 .todoDone li{
     text-decoration: line-through;
