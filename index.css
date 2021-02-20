@@ -165,7 +165,6 @@ input{
     left: 0;
     right: 0;
     width: 100%;
-    height: 100%;
     z-index: -1;
     animation: fadeIn 0.5s linear;
 }
@@ -173,10 +172,16 @@ input{
 body{
     background-color: #bdc3c7;
     overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.body_scroll{   /*height가 전체화면 height보다 줄어들면 스크롤 생기게 함: bgimage.js*/
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 @media (min-width: 768px) and (max-width: 1024px){
     body{
-        overflow-x: hidden;
+        overflow-y: scroll;
     }
 }
